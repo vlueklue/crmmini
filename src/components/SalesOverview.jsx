@@ -15,7 +15,7 @@ function SalesOverview({ salesData }) {
                 <div className="card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-[var(--text-secondary)]">Total Opportunities</p>
+                            <p className="text-sm text-[var(--text-secondary)]">Oportunidades Totales</p>
                             <p className="text-2xl font-bold text-[var(--text-primary)]">{totalOpportunities}</p>
                         </div>
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
@@ -27,7 +27,7 @@ function SalesOverview({ salesData }) {
                 <div className="card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-[var(--text-secondary)]">Pipeline Value</p>
+                            <p className="text-sm text-[var(--text-secondary)]">Valor del Pipeline</p>
                             <p className="text-2xl font-bold text-[var(--text-primary)]">${totalValue.toLocaleString()}</p>
                         </div>
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
@@ -39,7 +39,7 @@ function SalesOverview({ salesData }) {
                 <div className="card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-[var(--text-secondary)]">Won Deals</p>
+                            <p className="text-sm text-[var(--text-secondary)]">Tratos Ganados</p>
                             <p className="text-2xl font-bold text-[var(--text-primary)]">{wonDeals}</p>
                         </div>
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
@@ -51,7 +51,7 @@ function SalesOverview({ salesData }) {
                 <div className="card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-[var(--text-secondary)]">Avg Deal Size</p>
+                            <p className="text-sm text-[var(--text-secondary)]">Tamaño Promedio</p>
                             <p className="text-2xl font-bold text-[var(--text-primary)]">${avgDealSize.toLocaleString()}</p>
                         </div>
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">

@@ -18,7 +18,7 @@ function CustomerAnalytics({ reportsData }) {
                 data: {
                     labels: reportsData.customerGrowth.map(item => item.month),
                     datasets: [{
-                        label: 'Total Customers',
+                        label: 'Total de Clientes',
                         data: reportsData.customerGrowth.map(item => item.customers),
                         borderColor: 'rgb(124, 58, 237)',
                         backgroundColor: 'rgba(124, 58, 237, 0.1)',
@@ -53,7 +53,7 @@ function CustomerAnalytics({ reportsData }) {
 
     return (
         <div className="card" data-name="customer-analytics" data-file="components/CustomerAnalytics.jsx">
-            <h3 className="text-lg font-semibold mb-4">Customer Growth</h3>
+            <h3 className="text-lg font-semibold mb-4">Crecimiento de Clientes</h3>
             <div style={{ height: '300px' }}>
                 <canvas ref={chartRef}></canvas>
             </div>

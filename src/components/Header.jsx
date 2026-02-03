@@ -15,8 +15,8 @@ function Header() {
         <header className="bg-white border-b border-[var(--border-color)] px-6 py-4" data-name="header" data-file="components/Header.jsx">
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-[var(--text-primary)]">CRM Dashboard</h2>
-                    <p className="text-[var(--text-secondary)]">Manage your customers and sales</p>
+                    <h2 className="text-2xl font-bold text-[var(--text-primary)]">Panel CRM</h2>
+                    <p className="text-[var(--text-secondary)]">Gestiona tus clientes y ventas</p>
                 </div>
 
                 <div className="flex items-center space-x-4">

@@ -28,13 +28,13 @@ function CustomerList({ customers, setCustomers }) {
         <div className="space-y-6" data-name="customer-list" data-file="components/CustomerList.jsx">
             {/* Header */}
             <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold">Customers</h2>
+                <h2 className="text-2xl font-bold">Clientes</h2>
                 <button
                     onClick={() => setShowAddForm(true)}
                     className="btn-primary flex items-center"
                 >
                     <Plus className="text-lg mr-2 w-5 h-5" />
-                    Add Customer
+                    Agregar Cliente
                 </button>
             </div>
 
@@ -46,7 +46,7 @@ function CustomerList({ customers, setCustomers }) {
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--text-secondary)] w-4 h-4" />
                             <input
                                 type="text"
-                                placeholder="Search customers..."
+                                placeholder="Buscar clientes..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="input-field pl-10 pr-4"
@@ -58,15 +58,15 @@ function CustomerList({ customers, setCustomers }) {
                             onChange={(e) => setFilterStatus(e.target.value)}
                             className="input-field px-4 py-2"
                         >
-                            <option value="all">All Status</option>
-                            <option value="active">Active</option>
-                            <option value="pending">Pending</option>
-                            <option value="inactive">Inactive</option>
+                            <option value="all">Todos los Estados</option>
+                            <option value="active">Activo</option>
+                            <option value="pending">Pendiente</option>
+                            <option value="inactive">Inactivo</option>
                         </select>
                     </div>
 
                     <div className="text-sm text-[var(--text-secondary)]">
-                        Showing {filteredCustomers.length} of {customers.length} customers
+                        Mostrando {filteredCustomers.length} de {customers.length} clientes
                     </div>
                 </div>
             </div>
@@ -77,12 +77,12 @@ function CustomerList({ customers, setCustomers }) {
                     <table className="w-full">
                         <thead className="bg-gray-50">
                             <tr>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Customer</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Company</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Status</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Value</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Last Contact</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Actions</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Cliente</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Empresa</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Estado</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Valor</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Último Contacto</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Acciones</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
@@ -106,7 +106,7 @@ function CustomerList({ customers, setCustomers }) {
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <span className={`status-badge status-${customer.status}`}>
-                                            {customer.status}
+                                            {customer.status === 'active' ? 'Activo' : customer.status === 'pending' ? 'Pendiente' : 'Inactivo'}
                                         </span>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--text-primary)]">
@@ -169,12 +169,12 @@ function AddCustomerModal({ onSave, onCancel }) {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 backdrop-blur-sm" data-name="add-customer-modal" data-file="components/CustomerList.jsx">
             <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-2xl border border-[var(--border-color)]">
-                <h3 className="text-lg font-semibold mb-4">Add New Customer</h3>
+                <h3 className="text-lg font-semibold mb-4">Agregar Nuevo Cliente</h3>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Name
+                            Nombre
                         </label>
                         <input
                             type="text"
@@ -188,7 +188,7 @@ function AddCustomerModal({ onSave, onCancel }) {
 
                     <div>
                         <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Email
+                            Correo
                         </label>
                         <input
                             type="email"
@@ -202,7 +202,7 @@ function AddCustomerModal({ onSave, onCancel }) {
 
                     <div>
                         <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Company
+                            Empresa
                         </label>
                         <input
                             type="text"
@@ -216,7 +216,7 @@ function AddCustomerModal({ onSave, onCancel }) {
 
                     <div>
                         <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Phone
+                            Teléfono
                         </label>
                         <input
                             type="tel"
@@ -229,7 +229,7 @@ function AddCustomerModal({ onSave, onCancel }) {
 
                     <div>
                         <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Status
+                            Estado
                         </label>
                         <select
                             name="status"
@@ -237,15 +237,15 @@ function AddCustomerModal({ onSave, onCancel }) {
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
                         >
-                            <option value="active">Active</option>
-                            <option value="pending">Pending</option>
-                            <option value="inactive">Inactive</option>
+                            <option value="active">Activo</option>
+                            <option value="pending">Pendiente</option>
+                            <option value="inactive">Inactivo</option>
                         </select>
                     </div>
 
                     <div>
                         <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Value ($)
+                            Valor ($)
                         </label>
                         <input
                             type="number"
@@ -263,13 +263,13 @@ function AddCustomerModal({ onSave, onCancel }) {
                             onClick={onCancel}
                             className="btn-secondary"
                         >
-                            Cancel
+                            Cancelar
                         </button>
                         <button
                             type="submit"
                             className="btn-primary"
                         >
-                            Add Customer
+                            Agregar Cliente
                         </button>
                     </div>
                 </form>

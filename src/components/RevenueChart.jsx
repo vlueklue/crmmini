@@ -19,13 +19,13 @@ function RevenueChart() {
                 data: {
                     labels: mockRevenueData.map(item => item.month),
                     datasets: [{
-                        label: 'Revenue',
+                        label: 'Ingresos',
                         data: mockRevenueData.map(item => item.revenue),
                         backgroundColor: 'rgba(124, 58, 237, 0.8)',
                         borderColor: 'rgb(124, 58, 237)',
                         borderWidth: 1
                     }, {
-                        label: 'Target',
+                        label: 'Objetivo',
                         data: mockRevenueData.map(item => item.target),
                         backgroundColor: 'rgba(245, 158, 11, 0.3)',
                         borderColor: 'rgb(245, 158, 11)',
@@ -65,7 +65,7 @@ function RevenueChart() {
 
     return (
         <div className="card" data-name="revenue-chart" data-file="components/RevenueChart.jsx">
-            <h3 className="text-lg font-semibold mb-4">Revenue vs Target</h3>
+            <h3 className="text-lg font-semibold mb-4">Ingresos vs Objetivo</h3>
             <div style={{ height: '300px' }}>
                 <canvas ref={chartRef}></canvas>
             </div>

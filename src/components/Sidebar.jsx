@@ -10,10 +10,10 @@ const iconMap = {
 
 function Sidebar({ currentPage = 'dashboard', onNavigate }) {
     const menuItems = [
-        { id: 'dashboard', label: 'Dashboard', icon: 'layout-dashboard' },
-        { id: 'sales', label: 'Sales', icon: 'trending-up' },
-        { id: 'customers', label: 'Customers', icon: 'users' },
-        { id: 'reports', label: 'Reports', icon: 'chart-bar' }
+        { id: 'dashboard', label: 'Panel Principal', icon: 'layout-dashboard' },
+        { id: 'sales', label: 'Ventas', icon: 'trending-up' },
+        { id: 'customers', label: 'Clientes', icon: 'users' },
+        { id: 'reports', label: 'Reportes', icon: 'chart-bar' }
     ];
 
     return (
@@ -51,7 +51,7 @@ function Sidebar({ currentPage = 'dashboard', onNavigate }) {
                             <User className="text-white w-4 h-4" />
                         </div>
                         <div>
-                            <p className="text-sm font-medium text-[var(--text-primary)]">Admin User</p>
+                            <p className="text-sm font-medium text-[var(--text-primary)]">Administrador</p>
                             <p className="text-xs text-[var(--text-secondary)]">admin@company.com</p>
                         </div>
                     </div>

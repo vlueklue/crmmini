@@ -30,7 +30,7 @@ function StatCard({ title, value, icon, color, trend }) {
                         <div className="flex items-center mt-2 text-sm">
                             <TrendingUp className={`w-3 h-3 ${trend > 0 ? 'text-green-600' : 'text-red-600'}`} />
                             <span className={`ml-1 ${trend > 0 ? 'text-green-600' : 'text-red-600'}`}>
-                                {Math.abs(trend)}% from last month
+                                {Math.abs(trend)}% desde el mes pasado
                             </span>
                         </div>
                     )}

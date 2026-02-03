@@ -15,28 +15,28 @@ function Dashboard({ customers }) {
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <StatCard
-                    title="Active Customers"
+                    title="Clientes Activos"
                     value={activeCustomers}
                     icon="user-check"
                     color="green"
                     trend={8}
                 />
                 <StatCard
-                    title="Total Customers"
+                    title="Total Clientes"
                     value={totalCustomers}
                     icon="users"
                     color="blue"
                     trend={12}
                 />
                 <StatCard
-                    title="Total Value"
+                    title="Valor Total"
                     value={`$${totalValue.toLocaleString()}`}
                     icon="dollar-sign"
                     color="yellow"
                     trend={15}
                 />
                 <StatCard
-                    title="Average Value"
+                    title="Valor Promedio"
                     value={`$${avgValue.toLocaleString()}`}
                     icon="trending-up"
                     color="purple"
@@ -47,13 +47,13 @@ function Dashboard({ customers }) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Sales Chart */}
                 <div className="card">
-                    <h3 className="text-lg font-semibold mb-4">Sales Overview</h3>
+                    <h3 className="text-lg font-semibold mb-4">Resumen de Ventas</h3>
                     <SalesChart />
                 </div>
 
                 {/* Recent Customers */}
                 <div className="card">
-                    <h3 className="text-lg font-semibold mb-4">Recent Customers</h3>
+                    <h3 className="text-lg font-semibold mb-4">Clientes Recientes</h3>
                     <div className="space-y-3">
                         {recentCustomers.map(customer => (
                             <div key={customer.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
@@ -71,7 +71,7 @@ function Dashboard({ customers }) {
                                 <div className="text-right">
                                     <p className="font-medium">${customer.value.toLocaleString()}</p>
                                     <span className={`status-badge status-${customer.status}`}>
-                                        {customer.status}
+                                        {customer.status === 'active' ? 'Activo' : customer.status === 'pending' ? 'Pendiente' : 'Inactivo'}
                                     </span>
                                 </div>
                             </div>

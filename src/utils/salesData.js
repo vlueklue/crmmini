@@ -53,12 +53,12 @@ export const mockSalesOpportunities = [
 
 export const mockRevenueData = [
   { month: 'Jul', revenue: 85000, target: 90000 },
-  { month: 'Aug', revenue: 92000, target: 95000 },
+  { month: 'Ago', revenue: 92000, target: 95000 },
   { month: 'Sep', revenue: 78000, target: 85000 },
   { month: 'Oct', revenue: 105000, target: 100000 },
   { month: 'Nov', revenue: 118000, target: 110000 },
-  { month: 'Dec', revenue: 134000, target: 125000 },
-  { month: 'Jan', revenue: 142000, target: 135000 }
+  { month: 'Dic', revenue: 134000, target: 125000 },
+  { month: 'Ene', revenue: 142000, target: 135000 }
 ];
 
 export const mockPipelineStages = [
@@ -70,10 +70,10 @@ export const mockPipelineStages = [
 ];
 
 export const mockSalesData = [
-  { month: 'Jan', sales: 12000 },
+  { month: 'Ene', sales: 12000 },
   { month: 'Feb', sales: 19000 },
   { month: 'Mar', sales: 15000 },
-  { month: 'Apr', sales: 25000 },
+  { month: 'Abr', sales: 25000 },
   { month: 'May', sales: 22000 },
   { month: 'Jun', sales: 30000 }
 ];

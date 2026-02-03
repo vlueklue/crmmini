@@ -12,7 +12,7 @@ function ReportsOverview({ reportsData }) {
                 <div className="card metric-card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-[var(--text-secondary)]">Conversion Rate</p>
+                            <p className="text-sm text-[var(--text-secondary)]">Tasa de Conversión</p>
                             <p className="text-2xl font-bold text-[var(--text-primary)]">{metrics.conversionRate}%</p>
                         </div>
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
@@ -24,7 +24,7 @@ function ReportsOverview({ reportsData }) {
                 <div className="card metric-card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-[var(--text-secondary)]">Avg Deal Size</p>
+                            <p className="text-sm text-[var(--text-secondary)]">Tamaño Promedio</p>
                             <p className="text-2xl font-bold text-[var(--text-primary)]">${metrics.avgDealSize?.toLocaleString()}</p>
                         </div>
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
@@ -36,7 +36,7 @@ function ReportsOverview({ reportsData }) {
                 <div className="card metric-card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-[var(--text-secondary)]">Sales Cycle (Days)</p>
+                            <p className="text-sm text-[var(--text-secondary)]">Ciclo de Ventas (Días)</p>
                             <p className="text-2xl font-bold text-[var(--text-primary)]">{metrics.salesCycle}</p>
                         </div>
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
