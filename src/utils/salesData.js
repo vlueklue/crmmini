@@ -6,7 +6,7 @@ export const mockSalesOpportunities = [
     value: 45000,
     stage: 'negotiation',
     probability: 80,
-    closeDate: '2024-02-15',
+    closeDate: '2026-02-15',
     status: 'in-progress'
   },
   {
@@ -16,7 +16,7 @@ export const mockSalesOpportunities = [
     value: 25000,
     stage: 'proposal',
     probability: 60,
-    closeDate: '2024-02-28',
+    closeDate: '2026-02-28',
     status: 'in-progress'
   },
   {
@@ -26,7 +26,7 @@ export const mockSalesOpportunities = [
     value: 75000,
     stage: 'closed-won',
     probability: 100,
-    closeDate: '2024-01-20',
+    closeDate: '2026-01-20',
     status: 'won'
   },
   {
@@ -36,7 +36,7 @@ export const mockSalesOpportunities = [
     value: 120000,
     stage: 'qualification',
     probability: 40,
-    closeDate: '2024-03-15',
+    closeDate: '2026-03-15',
     status: 'in-progress'
   },
   {
@@ -46,7 +46,7 @@ export const mockSalesOpportunities = [
     value: 35000,
     stage: 'closed-lost',
     probability: 0,
-    closeDate: '2024-01-10',
+    closeDate: '2026-01-10',
     status: 'lost'
   }
 ];

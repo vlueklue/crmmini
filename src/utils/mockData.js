@@ -6,7 +6,7 @@ export const mockCustomers = [
     company: 'Tech Solutions Inc',
     status: 'Activo',
     value: 15000,
-    lastContact: '2024-01-15',
+    lastContact: '2026-01-15',
     phone: '+1 (555) 123-4567'
   },
   {
@@ -16,7 +16,7 @@ export const mockCustomers = [
     company: 'Digital Marketing Pro',
     status: 'Prospección',
     value: 8500,
-    lastContact: '2024-01-12',
+    lastContact: '2026-01-12',
     phone: '+1 (555) 987-6543'
   },
   {
@@ -26,7 +26,7 @@ export const mockCustomers = [
     company: 'Business Consulting Group',
     status: 'Activo',
     value: 25000,
-    lastContact: '2024-01-18',
+    lastContact: '2026-01-18',
     phone: '+1 (555) 456-7890'
   },
   {
@@ -36,7 +36,7 @@ export const mockCustomers = [
     company: 'Innovation Startup',
     status: 'Inactivo',
     value: 3200,
-    lastContact: '2024-01-08',
+    lastContact: '2026-01-08',
     phone: '+1 (555) 234-5678'
   },
   {
@@ -46,7 +46,7 @@ export const mockCustomers = [
     company: 'Enterprise Solutions',
     status: 'Activo',
     value: 45000,
-    lastContact: '2024-01-20',
+    lastContact: '2026-01-20',
     phone: '+1 (555) 345-6789'
   }
 ];
@@ -59,7 +59,7 @@ export const mockProspects = [
     company: 'Tech Start',
     status: 'Nuevo Prospecto',
     value: 5000,
-    lastContact: '2024-02-01',
+    lastContact: '2026-02-01',
     phone: '+1 (555) 111-2222'
   },
   {
@@ -69,7 +69,7 @@ export const mockProspects = [
     company: 'Design Studio',
     status: 'Calificado',
     value: 12000,
-    lastContact: '2024-01-28',
+    lastContact: '2026-01-28',
     phone: '+1 (555) 333-4444'
   },
   {
@@ -79,7 +79,7 @@ export const mockProspects = [
     company: 'Logistics Co',
     status: 'Propuesta',
     value: 8000,
-    lastContact: '2024-01-15',
+    lastContact: '2026-01-15',
     phone: '+1 (555) 555-6666'
   }
 ];

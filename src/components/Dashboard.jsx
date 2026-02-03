@@ -3,17 +3,45 @@ import StatCard from './StatCard';
 import SalesChart from './SalesChart';
 
 function Dashboard({ customers, prospects = [], salesOpportunities = [] }) {
+    const [timeRange, setTimeRange] = React.useState('year');
+
+    const filterByTime = (dateString) => {
+        if (!dateString) return false;
+        const date = new Date(dateString);
+        const now = new Date();
+        const startOfWeek = new Date(now.setDate(now.getDate() - now.getDay()));
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+        const startOfYear = new Date(now.getFullYear(), 0, 1);
+
+        switch (timeRange) {
+            case 'week':
+                return date >= startOfWeek;
+            case 'month':
+                return date >= startOfMonth;
+            case 'year':
+                return date >= startOfYear;
+            default:
+                return true;
+        }
+    };
+
+    // Filtered Data
+    const filteredCustomers = customers.filter(c => filterByTime(c.lastContact));
+    const filteredProspects = prospects.filter(p => filterByTime(p.lastContact));
+    const filteredOpportunities = salesOpportunities.filter(o => filterByTime(o.closeDate));
+
     // Counts
-    const totalCustomers = customers.length;
-    const activeCustomers = customers.filter(c => c.status === 'Activo').length;
-    const inNegotiationAll = salesOpportunities.filter(o => o.status === 'in-progress');
+    const totalCustomers = filteredCustomers.length;
+    const activeCustomers = filteredCustomers.filter(c => c.status === 'Activo').length;
+    const inNegotiationAll = filteredOpportunities.filter(o => o.status === 'in-progress');
     const inNegotiationCount = inNegotiationAll.length;
 
     // Values
-    const totalValue = customers.reduce((sum, c) => sum + c.value, 0);
-    const prospectsValue = prospects.reduce((sum, p) => sum + (p.value || 0), 0);
+    const totalValue = filteredCustomers.reduce((sum, c) => sum + c.value, 0);
+    const prospectsValue = filteredProspects.reduce((sum, p) => sum + (p.value || 0), 0);
     const negotiationValue = inNegotiationAll.reduce((sum, o) => sum + o.value, 0);
-    const activeValue = customers.filter(c => c.status === 'Activo').reduce((sum, c) => sum + c.value, 0);
+    const activeValue = filteredCustomers.filter(c => c.status === 'Activo').reduce((sum, c) => sum + c.value, 0);
+
 
     const recentCustomers = customers.slice(0, 3);
 
@@ -21,10 +49,25 @@ function Dashboard({ customers, prospects = [], salesOpportunities = [] }) {
         <div className="space-y-6" data-name="dashboard" data-file="components/Dashboard.jsx">
             {/* Stats Grid */}
             {/* Stats Grid */}
+            {/* Header & Filter */}
+            <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-[var(--text-primary)]">Resumen de Actividad</h2>
+                <select
+                    value={timeRange}
+                    onChange={(e) => setTimeRange(e.target.value)}
+                    className="input-field w-auto px-4 py-2"
+                >
+                    <option value="week">Esta Semana</option>
+                    <option value="month">Este Mes</option>
+                    <option value="year">Este Año</option>
+                </select>
+            </div>
+
+            {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <StatCard
                     title="Prospectos"
-                    value={prospects.length}
+                    value={filteredProspects.length}
                     icon="user-plus"
                     color="blue"
                     trend={10}
@@ -105,8 +148,8 @@ function Dashboard({ customers, prospects = [], salesOpportunities = [] }) {
                                 <div className="text-right">
                                     <p className="font-medium">${customer.value.toLocaleString()}</p>
                                     <span className={`status-badge ${customer.status === 'Activo' ? 'status-active' :
-                                            customer.status === 'Inactivo' ? 'status-inactive' :
-                                                'status-pending'
+                                        customer.status === 'Inactivo' ? 'status-inactive' :
+                                            'status-pending'
                                         }`}>
                                         {customer.status}
                                     </span>

@@ -11,9 +11,9 @@ const iconMap = {
 function Sidebar({ currentPage = 'dashboard', onNavigate }) {
     const menuItems = [
         { id: 'dashboard', label: 'Panel Principal', icon: 'layout-dashboard' },
-        { id: 'sales', label: 'Ventas', icon: 'trending-up' },
-        { id: 'customers', label: 'Clientes', icon: 'users' },
         { id: 'prospects', label: 'Prospectos', icon: 'user-plus' },
+        { id: 'customers', label: 'Clientes', icon: 'users' },
+        { id: 'sales', label: 'Ventas', icon: 'trending-up' },
         { id: 'reports', label: 'Reportes', icon: 'chart-bar' }
     ];
 
