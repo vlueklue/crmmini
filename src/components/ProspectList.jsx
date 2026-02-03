@@ -9,7 +9,7 @@ function ProspectList({ prospects = [] }) {
         name: '',
         email: '',
         company: '',
-        status: 'active',
+        status: 'Nuevo Prospecto',
         value: '',
         phone: ''
     });
@@ -90,9 +90,13 @@ function ProspectList({ prospects = [] }) {
                         className="input-field px-4 py-2"
                     >
                         <option value="all">Todos los Estados</option>
-                        <option value="active">Activo</option>
-                        <option value="pending">Pendiente</option>
-                        <option value="inactive">Inactivo</option>
+                        <option value="Nuevo Prospecto">Nuevo Prospecto</option>
+                        <option value="Calificado">Calificado</option>
+                        <option value="Contactado">Contactado</option>
+                        <option value="Propuesta">Propuesta</option>
+                        <option value="En Negociación">En Negociación</option>
+                        <option value="Ganado">Ganado</option>
+                        <option value="Perdido">Perdido</option>
                     </select>
                 </div>
 
@@ -140,8 +144,11 @@ function ProspectList({ prospects = [] }) {
                                         <div className="text-sm text-[var(--text-secondary)]">{prospect.phone}</div>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
-                                        <span className={`status-badge status-${prospect.status}`}>
-                                            {prospect.status === 'active' ? 'Activo' : prospect.status === 'pending' ? 'Pendiente' : 'Inactivo'}
+                                        <span className={`status-badge ${prospect.status === 'Ganado' || prospect.status === 'Calificado' ? 'status-active' :
+                                            prospect.status === 'Perdido' ? 'status-inactive' :
+                                                'status-pending'
+                                            }`}>
+                                            {prospect.status}
                                         </span>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--text-primary)]">
@@ -234,9 +241,13 @@ function ProspectList({ prospects = [] }) {
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
                                 >
-                                    <option value="active">Activo</option>
-                                    <option value="pending">Pendiente</option>
-                                    <option value="inactive">Inactivo</option>
+                                    <option value="Nuevo Prospecto">Nuevo Prospecto</option>
+                                    <option value="Calificado">Calificado</option>
+                                    <option value="Contactado">Contactado</option>
+                                    <option value="Propuesta">Propuesta</option>
+                                    <option value="En Negociación">En Negociación</option>
+                                    <option value="Ganado">Ganado</option>
+                                    <option value="Perdido">Perdido</option>
                                 </select>
                             </div>
 

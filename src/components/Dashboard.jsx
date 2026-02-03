@@ -2,18 +2,40 @@ import React from 'react';
 import StatCard from './StatCard';
 import SalesChart from './SalesChart';
 
-function Dashboard({ customers }) {
+function Dashboard({ customers, prospects = [], salesOpportunities = [] }) {
+    // Counts
     const totalCustomers = customers.length;
-    const activeCustomers = customers.filter(c => c.status === 'active').length;
+    const activeCustomers = customers.filter(c => c.status === 'Activo').length;
+    const inNegotiationAll = salesOpportunities.filter(o => o.status === 'in-progress');
+    const inNegotiationCount = inNegotiationAll.length;
+
+    // Values
     const totalValue = customers.reduce((sum, c) => sum + c.value, 0);
-    const avgValue = totalCustomers > 0 ? Math.round(totalValue / totalCustomers) : 0;
+    const prospectsValue = prospects.reduce((sum, p) => sum + (p.value || 0), 0);
+    const negotiationValue = inNegotiationAll.reduce((sum, o) => sum + o.value, 0);
+    const activeValue = customers.filter(c => c.status === 'Activo').reduce((sum, c) => sum + c.value, 0);
 
     const recentCustomers = customers.slice(0, 3);
 
     return (
         <div className="space-y-6" data-name="dashboard" data-file="components/Dashboard.jsx">
             {/* Stats Grid */}
+            {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <StatCard
+                    title="Prospectos"
+                    value={prospects.length}
+                    icon="user-plus"
+                    color="blue"
+                    trend={10}
+                />
+                <StatCard
+                    title="En Negociación"
+                    value={inNegotiationCount}
+                    icon="briefcase"
+                    color="purple"
+                    trend={5}
+                />
                 <StatCard
                     title="Clientes Activos"
                     value={activeCustomers}
@@ -28,19 +50,31 @@ function Dashboard({ customers }) {
                     color="blue"
                     trend={12}
                 />
+
+                <StatCard
+                    title="Valor de Prospectos"
+                    value={`$${prospectsValue.toLocaleString()}`}
+                    icon="dollar-sign"
+                    color="blue"
+                />
+                <StatCard
+                    title="Valor en Negociación"
+                    value={`$${negotiationValue.toLocaleString()}`}
+                    icon="trending-up"
+                    color="purple"
+                />
+                <StatCard
+                    title="Valor Clientes Activos"
+                    value={`$${activeValue.toLocaleString()}`}
+                    icon="activity"
+                    color="green"
+                />
                 <StatCard
                     title="Valor Total"
                     value={`$${totalValue.toLocaleString()}`}
                     icon="dollar-sign"
                     color="yellow"
                     trend={15}
-                />
-                <StatCard
-                    title="Valor Promedio"
-                    value={`$${avgValue.toLocaleString()}`}
-                    icon="trending-up"
-                    color="purple"
-                    trend={5}
                 />
             </div>
 
@@ -70,8 +104,11 @@ function Dashboard({ customers }) {
                                 </div>
                                 <div className="text-right">
                                     <p className="font-medium">${customer.value.toLocaleString()}</p>
-                                    <span className={`status-badge status-${customer.status}`}>
-                                        {customer.status === 'active' ? 'Activo' : customer.status === 'pending' ? 'Pendiente' : 'Inactivo'}
+                                    <span className={`status-badge ${customer.status === 'Activo' ? 'status-active' :
+                                            customer.status === 'Inactivo' ? 'status-inactive' :
+                                                'status-pending'
+                                        }`}>
+                                        {customer.status}
                                     </span>
                                 </div>
                             </div>

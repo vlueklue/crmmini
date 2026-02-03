@@ -51,7 +51,7 @@ function SalesOverview({ salesData }) {
                 <div className="card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-[var(--text-secondary)]">Tamaño Promedio</p>
+                            <p className="text-sm text-[var(--text-secondary)]">Factura Promedio</p>
                             <p className="text-2xl font-bold text-[var(--text-primary)]">${avgDealSize.toLocaleString()}</p>
                         </div>
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">

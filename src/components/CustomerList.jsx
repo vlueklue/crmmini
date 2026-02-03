@@ -59,9 +59,10 @@ function CustomerList({ customers, setCustomers }) {
                             className="input-field px-4 py-2"
                         >
                             <option value="all">Todos los Estados</option>
-                            <option value="active">Activo</option>
-                            <option value="pending">Pendiente</option>
-                            <option value="inactive">Inactivo</option>
+                            <option value="Prospección">Prospección</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                            <option value="Perdido">Perdido</option>
                         </select>
                     </div>
 
@@ -105,8 +106,11 @@ function CustomerList({ customers, setCustomers }) {
                                         {customer.company}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
-                                        <span className={`status-badge status-${customer.status}`}>
-                                            {customer.status === 'active' ? 'Activo' : customer.status === 'pending' ? 'Pendiente' : 'Inactivo'}
+                                        <span className={`status-badge ${customer.status === 'Activo' ? 'status-active' :
+                                                customer.status === 'Inactivo' ? 'status-inactive' :
+                                                    'status-pending'
+                                            }`}>
+                                            {customer.status}
                                         </span>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--text-primary)]">
@@ -149,7 +153,9 @@ function AddCustomerModal({ onSave, onCancel }) {
         email: '',
         company: '',
         phone: '',
-        status: 'active',
+        company: '',
+        phone: '',
+        status: 'Activo',
         value: 0
     });
 
@@ -237,9 +243,10 @@ function AddCustomerModal({ onSave, onCancel }) {
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
                         >
-                            <option value="active">Activo</option>
-                            <option value="pending">Pendiente</option>
-                            <option value="inactive">Inactivo</option>
+                            <option value="Prospección">Prospección</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                            <option value="Perdido">Perdido</option>
                         </select>
                     </div>
 

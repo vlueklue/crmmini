@@ -7,7 +7,7 @@ import ProspectList from './components/ProspectList';
 import SalesOverview from './components/SalesOverview';
 import ReportsOverview from './components/ReportsOverview';
 import { mockCustomers, mockProspects } from './utils/mockData';
-import { mockSalesData } from './utils/salesData';
+import { mockSalesData, mockSalesOpportunities } from './utils/salesData';
 import { mockReportsData } from './utils/reportsData';
 
 class ErrorBoundary extends React.Component {
@@ -63,17 +63,17 @@ function App() {
     const renderContent = () => {
       switch (currentView) {
         case 'dashboard':
-          return <Dashboard customers={customers} />;
+          return <Dashboard customers={customers} prospects={mockProspects} salesOpportunities={mockSalesOpportunities} />;
         case 'customers':
           return <CustomerList customers={customers} setCustomers={setCustomers} />;
         case 'prospects':
           return <ProspectList prospects={mockProspects} />;
         case 'sales':
-          return <SalesOverview salesData={mockSalesData} />;
+          return <SalesOverview salesData={mockSalesOpportunities} />;
         case 'reports':
           return <ReportsOverview reportsData={mockReportsData} />;
         default:
-          return <Dashboard customers={customers} />;
+          return <Dashboard customers={customers} prospects={mockProspects} salesOpportunities={mockSalesOpportunities} />;
       }
     };
 
