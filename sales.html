@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sales - Mini CRM Dashboard</title>
+    <meta name="description" content="Sales analytics and pipeline management for your CRM">
+    <meta name="keywords" content="CRM, sales, analytics, pipeline, revenue tracking">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sales - Mini CRM Dashboard">
+    <meta property="og:description" content="Sales analytics and pipeline management for your CRM">
+    
+    <!-- Twitter -->
+    <meta name="twitter:title" content="Sales - Mini CRM Dashboard">
+    <meta name="twitter:description" content="Sales analytics and pipeline management for your CRM">
+
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+    <script>
+        const ChartJS = window.Chart;
+    </script>
+
+    <style type="text/tailwindcss">
+    @layer theme {
+        :root {
+            --primary-color: #7c3aed;
+            --primary-dark: #6d28d9;
+            --primary-light: #a78bfa;
+            --accent-color: #f59e0b;
+            --secondary-color: #f8fafc;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --sidebar-bg: #fafafa;
+            --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --sidebar-width: 240px;
+        }
+    }
+
+    @layer base {
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+    }
+
+    @layer components {
+        .btn-primary {
+            @apply bg-[var(--primary-color)] hover:bg-[var(--primary-dark)] text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+        }
+        
+        .btn-secondary {
+            @apply bg-white hover:bg-gray-50 text-[var(--text-primary)] border border-[var(--border-color)] px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md;
+        }
+        
+        .card {
+            @apply bg-white rounded-xl p-6 border border-[var(--border-color)];
+            box-shadow: var(--card-shadow);
+            transition: all 0.2s ease;
+        }
+        
+        .card:hover {
+            @apply shadow-lg;
+            transform: translateY(-1px);
+        }
+        
+        .sidebar {
+            @apply w-[var(--sidebar-width)] fixed left-0 top-0 h-full border-r border-[var(--border-color)];
+            background: var(--sidebar-bg);
+            backdrop-filter: blur(10px);
+        }
+        
+        .main-content {
+            @apply ml-[var(--sidebar-width)] min-h-screen;
+        }
+        
+        .status-badge {
+            @apply px-3 py-1 rounded-full text-xs font-semibold;
+        }
+        
+        .status-won {
+            @apply bg-emerald-100 text-emerald-700 border border-emerald-200;
+        }
+        
+        .status-in-progress {
+            @apply bg-amber-100 text-amber-700 border border-amber-200;
+        }
+        
+        .status-lost {
+            @apply bg-red-100 text-red-700 border border-red-200;
+        }
+        
+        .pipeline-stage {
+            @apply bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-lg p-4;
+        }
+    }
+
+    @layer utilities {
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    }
+    </style>
+
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel" src="components/Sidebar.js"></script>
+    <script type="text/babel" src="components/SalesHeader.js"></script>
+    <script type="text/babel" src="components/SalesOverview.js"></script>
+    <script type="text/babel" src="components/SalesPipeline.js"></script>
+    <script type="text/babel" src="components/RevenueChart.js"></script>
+    <script type="text/babel" src="utils/salesData.js"></script>
+    <script type="text/babel" src="sales-app.js"></script>
+</body>
+</html>
