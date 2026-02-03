@@ -1,7 +1,7 @@
 import React from 'react';
 import { Plus, Search, Edit, Trash2 } from 'lucide-react';
 
-function CustomerList({ customers, setCustomers }) {
+function CustomerList({ customers, setCustomers, prospects = [] }) {
     const [searchTerm, setSearchTerm] = React.useState('');
     const [filterStatus, setFilterStatus] = React.useState('all');
     const [showAddForm, setShowAddForm] = React.useState(false);
@@ -107,8 +107,8 @@ function CustomerList({ customers, setCustomers }) {
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <span className={`status-badge ${customer.status === 'Activo' ? 'status-active' :
-                                                customer.status === 'Inactivo' ? 'status-inactive' :
-                                                    'status-pending'
+                                            customer.status === 'Inactivo' ? 'status-inactive' :
+                                                'status-pending'
                                             }`}>
                                             {customer.status}
                                         </span>
@@ -141,23 +141,52 @@ function CustomerList({ customers, setCustomers }) {
                 <AddCustomerModal
                     onSave={handleAddCustomer}
                     onCancel={() => setShowAddForm(false)}
+                    prospects={prospects}
                 />
             )}
         </div>
     );
 }
 
-function AddCustomerModal({ onSave, onCancel }) {
+function AddCustomerModal({ onSave, onCancel, prospects }) {
     const [formData, setFormData] = React.useState({
         name: '',
         email: '',
         company: '',
         phone: '',
-        company: '',
-        phone: '',
         status: 'Activo',
         value: 0
     });
+
+    const [selectedProspectId, setSelectedProspectId] = React.useState('');
+
+    const handleProspectChange = (e) => {
+        const prospectId = e.target.value;
+        setSelectedProspectId(prospectId);
+
+        if (prospectId) {
+            const prospect = prospects.find(p => p.id === parseInt(prospectId));
+            if (prospect) {
+                setFormData({
+                    ...formData,
+                    name: prospect.name,
+                    email: prospect.email,
+                    company: prospect.company,
+                    phone: prospect.phone,
+                    value: prospect.value || 0
+                });
+            }
+        } else {
+            setFormData({
+                name: '',
+                email: '',
+                company: '',
+                phone: '',
+                status: 'Activo',
+                value: 0
+            });
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -180,58 +209,39 @@ function AddCustomerModal({ onSave, onCancel }) {
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Nombre
+                            Seleccionar Prospecto
                         </label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                            className="input-field"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Correo
-                        </label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            className="input-field"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Empresa
-                        </label>
-                        <input
-                            type="text"
-                            name="company"
-                            value={formData.company}
-                            onChange={handleChange}
-                            required
+                        <select
+                            value={selectedProspectId}
+                            onChange={handleProspectChange}
                             className="w-full px-3 py-2 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
-                        />
+                        >
+                            <option value="">-- Seleccionar --</option>
+                            {prospects.map(prospect => (
+                                <option key={prospect.id} value={prospect.id}>
+                                    {prospect.name} - {prospect.company}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Teléfono
-                        </label>
-                        <input
-                            type="tel"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
-                        />
-                    </div>
+                    {/* Read-only preview fields */}
+                    {selectedProspectId && (
+                        <div className="space-y-4 bg-gray-50 p-4 rounded-lg">
+                            <div>
+                                <label className="block text-xs font-medium text-[var(--text-secondary)]">Nombre</label>
+                                <p className="text-sm font-medium">{formData.name}</p>
+                            </div>
+                            <div>
+                                <label className="block text-xs font-medium text-[var(--text-secondary)]">Empresa</label>
+                                <p className="text-sm font-medium">{formData.company}</p>
+                            </div>
+                            <div>
+                                <label className="block text-xs font-medium text-[var(--text-secondary)]">Correo</label>
+                                <p className="text-sm font-medium">{formData.email}</p>
+                            </div>
+                        </div>
+                    )}
 
                     <div>
                         <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
@@ -275,6 +285,7 @@ function AddCustomerModal({ onSave, onCancel }) {
                         <button
                             type="submit"
                             className="btn-primary"
+                            disabled={!selectedProspectId}
                         >
                             Agregar Cliente
                         </button>

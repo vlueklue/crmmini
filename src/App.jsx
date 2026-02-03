@@ -65,7 +65,7 @@ function App() {
         case 'dashboard':
           return <Dashboard customers={customers} prospects={mockProspects} salesOpportunities={mockSalesOpportunities} />;
         case 'customers':
-          return <CustomerList customers={customers} setCustomers={setCustomers} />;
+          return <CustomerList customers={customers} setCustomers={setCustomers} prospects={mockProspects} />;
         case 'prospects':
           return <ProspectList prospects={mockProspects} />;
         case 'sales':
