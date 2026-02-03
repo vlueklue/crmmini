@@ -68,3 +68,12 @@ export const mockPipelineStages = [
   { stage: 'Negotiation', count: 3, value: 195000 },
   { stage: 'Closed Won', count: 2, value: 95000 }
 ];
+
+export const mockSalesData = [
+  { month: 'Jan', sales: 12000 },
+  { month: 'Feb', sales: 19000 },
+  { month: 'Mar', sales: 15000 },
+  { month: 'Apr', sales: 25000 },
+  { month: 'May', sales: 22000 },
+  { month: 'Jun', sales: 30000 }
+];

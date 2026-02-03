@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from 'chart.js/auto';
-import { mockSalesData } from '../utils/mockData';
+import { mockSalesData } from '../utils/salesData';
 
 function SalesChart() {
     const chartRef = React.useRef(null);
