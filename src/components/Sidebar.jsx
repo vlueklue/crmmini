@@ -13,6 +13,7 @@ function Sidebar({ currentPage = 'dashboard', onNavigate }) {
         { id: 'dashboard', label: 'Panel Principal', icon: 'layout-dashboard' },
         { id: 'sales', label: 'Ventas', icon: 'trending-up' },
         { id: 'customers', label: 'Clientes', icon: 'users' },
+        { id: 'prospects', label: 'Prospectos', icon: 'user-plus' },
         { id: 'reports', label: 'Reportes', icon: 'chart-bar' }
     ];
 

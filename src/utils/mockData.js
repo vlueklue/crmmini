@@ -50,3 +50,36 @@ export const mockCustomers = [
     phone: '+1 (555) 345-6789'
   }
 ];
+
+export const mockProspects = [
+  {
+    id: 1,
+    name: 'Carlos Ruiz',
+    email: 'carlos.ruiz@startup.com',
+    company: 'Tech Start',
+    status: 'pending',
+    value: 5000,
+    lastContact: '2024-02-01',
+    phone: '+1 (555) 111-2222'
+  },
+  {
+    id: 2,
+    name: 'Ana López',
+    email: 'ana.lopez@design.studio',
+    company: 'Design Studio',
+    status: 'active',
+    value: 12000,
+    lastContact: '2024-01-28',
+    phone: '+1 (555) 333-4444'
+  },
+  {
+    id: 3,
+    name: 'Roberto Diaz',
+    email: 'roberto.d@logistics.co',
+    company: 'Logistics Co',
+    status: 'inactive',
+    value: 8000,
+    lastContact: '2024-01-15',
+    phone: '+1 (555) 555-6666'
+  }
+];

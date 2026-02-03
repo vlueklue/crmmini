@@ -3,9 +3,10 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import CustomerList from './components/CustomerList';
+import ProspectList from './components/ProspectList';
 import SalesOverview from './components/SalesOverview';
 import ReportsOverview from './components/ReportsOverview';
-import { mockCustomers } from './utils/mockData';
+import { mockCustomers, mockProspects } from './utils/mockData';
 import { mockSalesData } from './utils/salesData';
 import { mockReportsData } from './utils/reportsData';
 
@@ -65,6 +66,8 @@ function App() {
           return <Dashboard customers={customers} />;
         case 'customers':
           return <CustomerList customers={customers} setCustomers={setCustomers} />;
+        case 'prospects':
+          return <ProspectList prospects={mockProspects} />;
         case 'sales':
           return <SalesOverview salesData={mockSalesData} />;
         case 'reports':
